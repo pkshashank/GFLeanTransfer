@@ -1,0 +1,15 @@
+resolver: lts-20.26
+
+packages:
+- .
+
+# so that `stack build --copy-bins` puts bin here
+local-bin-path: .
+
+extra-deps:
+- github: smucclaw/gf-core
+  commit: edb55df7b0c4892ba0bac2817b5f493921c20c36
+- cgi-3001.5.0.0@sha256:3d1193a328d5f627a021a0ef3927c1ae41dd341e32dba612fed52d0e3a6df056,2990
+- multipart-0.2.1@sha256:c96322a5bb34c29738ba82345d071a8e07d752648de3522f1c04d96df955ea0d,1150
+
+allow-newer: true
