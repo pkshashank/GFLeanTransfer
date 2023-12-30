@@ -7,12 +7,12 @@ simplified - ex. assume x is a rational number x . assume x is equal to ( 2 * 2 
 translated - example ( x : ℚ ) ( h? : x = ( 2 * 2 ) ) : x > 3 := sorry
 
 INPUT:
-ex. every odd integer greater than 2 is greater than 3 . 
+ex. every odd integer greater than 2 is greater than 1 . 
 OUTPUT:
-The sentence is - ex. every odd integer greater than 2 is greater than 3 . 
-added variable names - ex. then every odd integer ( x 6 ) greater than 2 is greater than 3 .
-simplified - ex. then for every integer ( x 6 ) such that ( x 6 ) is odd and ( x 6 ) is greater than 2 , ( x 6 ) is greater than 3 .
-translated - example : ∀ ( ( x 6 ) : ℤ ), ( ( odd ( x 6 ) ∧ ( x 6 ) > 2 ) → ( x 6 ) > 3 ) := sorry
+The sentence is - ex. every odd integer greater than 2 is greater than 1 . 
+added variable names - ex. then every odd integer ( x 6 ) greater than 2 is greater than 1 .
+simplified - ex. then for every integer ( x 6 ) such that ( x 6 ) is odd and ( x 6 ) is greater than 2 , ( x 6 ) is greater than 1 .
+translated - example : ∀ ( ( x 6 ) : ℤ ), ( ( odd ( x 6 ) ∧ ( x 6 ) > 2 ) → ( x 6 ) > 1 ) := sorry
 
 
 INPUT:
