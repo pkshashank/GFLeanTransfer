@@ -1,1 +1,1 @@
-ex. assume x is a rational number . assume x is equal to ( 2 * 2 ) . then x is greater than 3 .
+ex . assume x is a rational number . assume x is equal to ( 2 * 2 ) . then x is greater than 3 .
