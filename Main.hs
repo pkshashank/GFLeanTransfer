@@ -15,8 +15,9 @@ main = do
   leanGr <- readPGF "Blocks.pgf"
   let eng = head $ languages engGr
   let lean = head $ languages leanGr
-  s <- readFile "prompt.txt"
-  putStrLn ("The sentence is - " ++ s) 
+  x <- readFile "prompt.txt"
+  let s = preprocess x
+  putStrLn ("Preprocessing:" ++ s) 
   let tree = head $ parse engGr eng (extract $ readType "text") s
 
   -- Giving names to all notions 
