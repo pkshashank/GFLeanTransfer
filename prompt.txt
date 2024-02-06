@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 Ex. Assume x is an integer. Assume x is odd and x is greater than 1. Then x is greater than 0.
-=======
-ex . assume x is a rational number . assume x is equal to ( 2 * 2 ) . then x is greater than 3 .
->>>>>>> main
