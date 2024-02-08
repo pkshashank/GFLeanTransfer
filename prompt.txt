@@ -1,1 +1,1 @@
-Ex. Assume x is an integer. Assume x is odd and x is greater than 1. Then x is greater than 0.
+Ex. Assume x is an integer and x is odd and x is greater than 2. Then ( x - 1 ) is even and ( x - 1 ) is greater than 1.
