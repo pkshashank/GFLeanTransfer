@@ -7,7 +7,7 @@ import Simplifications
 import Translations
 import Utilities
 import Prelude
-import Preprocessing
+import Processing
 
 main :: IO()
 main = do
