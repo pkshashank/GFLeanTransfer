@@ -16,6 +16,7 @@ abstract Lexicon = {
         B_VAR : variable ;
         C_VAR : variable ;
         K_VAR : variable ;
+        M_VAR : variable ;
         N_VAR : variable ;
         R_VAR : variable ;
         X_VAR : variable ;

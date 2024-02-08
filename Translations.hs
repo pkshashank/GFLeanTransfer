@@ -16,6 +16,7 @@ translateVariable Texts.GA_VAR = Blocks.GA_VAR
 translateVariable Texts.GB_VAR = Blocks.GB_VAR
 translateVariable Texts.GC_VAR = Blocks.GC_VAR
 translateVariable Texts.GK_VAR = Blocks.GK_VAR
+translateVariable Texts.GM_VAR = Blocks.GM_VAR
 translateVariable Texts.GN_VAR = Blocks.GN_VAR
 translateVariable Texts.GR_VAR = Blocks.GR_VAR
 translateVariable Texts.GX_VAR = Blocks.GX_VAR

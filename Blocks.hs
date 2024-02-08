@@ -141,6 +141,7 @@ data Gvariable =
  | GB_VAR 
  | GC_VAR 
  | GK_VAR 
+ | GM_VAR 
  | GN_VAR 
  | GR_VAR 
  | GX_VAR 
@@ -405,6 +406,7 @@ instance Gf Gvariable where
   gf GB_VAR = mkApp (mkCId "B_VAR") []
   gf GC_VAR = mkApp (mkCId "C_VAR") []
   gf GK_VAR = mkApp (mkCId "K_VAR") []
+  gf GM_VAR = mkApp (mkCId "M_VAR") []
   gf GN_VAR = mkApp (mkCId "N_VAR") []
   gf GR_VAR = mkApp (mkCId "R_VAR") []
   gf GX_VAR = mkApp (mkCId "X_VAR") []
@@ -418,6 +420,7 @@ instance Gf Gvariable where
       Just (i,[]) | i == mkCId "B_VAR" -> GB_VAR 
       Just (i,[]) | i == mkCId "C_VAR" -> GC_VAR 
       Just (i,[]) | i == mkCId "K_VAR" -> GK_VAR 
+      Just (i,[]) | i == mkCId "M_VAR" -> GM_VAR 
       Just (i,[]) | i == mkCId "N_VAR" -> GN_VAR 
       Just (i,[]) | i == mkCId "R_VAR" -> GR_VAR 
       Just (i,[]) | i == mkCId "X_VAR" -> GX_VAR 
