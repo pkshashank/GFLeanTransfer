@@ -7,3 +7,4 @@ This is still a work in progress, and thus the program cannot handle all example
 
 To run the program, use `stack run`. The input should be put in the prompt.txt file.
 
+To install `stack` use [this](https://docs.haskellstack.org/en/stable/).
