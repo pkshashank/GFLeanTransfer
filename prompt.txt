@@ -1,1 +1,1 @@
-Ex. Assume n is an integer. Then ( ( ( n - 5 ) * ( n + 7 ) ) * ( n + 13 ) ) is odd iff n is even.
+Ex. Assume n is an odd integer more than 1 and x is an even integer less than 0. Then n is more than x.

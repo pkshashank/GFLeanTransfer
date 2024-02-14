@@ -1,3 +1,4 @@
+{-# OPTIONS_GHC -Wno-overlapping-patterns #-}
 module Simplifications where
 
 import PGF
@@ -12,15 +13,28 @@ simplifyExample :: Gexample -> Gexample
 simplifyExample (GassToExm lass stm) = GassToExm (simplifyLassumption lass) (simplifyStatement stm)
 
 simplifyLassumption :: GLassumption -> GLassumption
--- Simplifying the list of assumptions. Chains of `and` become seperate assumptions.
--- Assume A and B --> Assume A. Assume B.
-simplifyLassumption (GCassumption (GstmToAssumption (GandStm stm1 stm2)) lass) = GCassumption (GstmToAssumption stm1) (GCassumption (GstmToAssumption stm2) (simplifyLassumption lass))
-simplifyLassumption (GCassumption ass lass) = GCassumption (simplifyAssumption ass) (simplifyLassumption lass)
-simplifyLassumption x = x
+simplifyLassumption (GCassumption ass lass) = splitLassumption (GCassumption (simplifyAssumption ass) (simplifyLassumption lass))
+simplifyLassumption x = x 
 
-simplifyAssumption :: Gassumption-> Gassumption
+-- Splitting is first separating the such thats and then the Ands
+splitLassumption :: GLassumption -> GLassumption
+splitLassumption = splitAndsLassumption . splitSuchThatLassumption . splitAndsLassumption
+--splitLassumption = splitSuchThatLassumption . splitAndsLassumption
+
+-- `Assume A and B` becomes `Assume A. Assume B` with B split too
+splitAndsLassumption :: GLassumption -> GLassumption
+splitAndsLassumption (GCassumption (GstmToAssumption (GandStm x1 x2)) lass) = GCassumption (GstmToAssumption x1) (splitAndsLassumption (GCassumption (GstmToAssumption x2) lass)) -- Assume A and B case
+splitAndsLassumption (GCassumption a l) = GCassumption a (splitAndsLassumption l)
+splitAndsLassumption x = x 
+
+-- `Assume A such that B` becomes `Assume A. Assume B` with B split too.
+splitSuchThatLassumption :: GLassumption -> GLassumption
+splitSuchThatLassumption (GCassumption (GstmToAssumption y@((GtermDoesPredToStm (GdefTermToTerm (GvarToDefTerm x)) (GisAPredToDPred (GclNounToIs_aPred pol (GprClNounRAttrToNotion pcn (GstmToRAttr stm))))))) lass)  = GCassumption (GstmToAssumption (extractHeadStatement y)) (GCassumption (GstmToAssumption (extractRAStatement y)) (splitSuchThatLassumption lass)) -- Assume A such that B case
+splitSuchThatLassumption (GCassumption a l) = GCassumption a (splitSuchThatLassumption l) 
+splitSuchThatLassumption x = x 
+
+simplifyAssumption :: Gassumption -> Gassumption
 simplifyAssumption (GstmToAssumption x) = GstmToAssumption (simplifyStatement x)
-
 
 simplifyStatement :: Gstatement -> Gstatement
 simplifyStatement (GandStm x1 x2) = GandStm (simplifyStatement x1) (simplifyStatement x2)
