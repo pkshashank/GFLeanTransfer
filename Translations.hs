@@ -4,9 +4,6 @@ import PGF
 import Texts -- English file
 import Blocks -- Lean grammar
 import Utilities
-import Texts (GprimAdjective(GrA0ToPAdj, GrA1ToPAdj), GisPredicate (GprimAdjToIsPred))
-import Blocks (Gproposition(Grel1ToProp, Grel2ToProp), Gentity)
-
 
 
 -- The integers (fully done)
@@ -19,6 +16,7 @@ translateVariable Texts.GA_VAR = Blocks.GA_VAR
 translateVariable Texts.GB_VAR = Blocks.GB_VAR
 translateVariable Texts.GC_VAR = Blocks.GC_VAR
 translateVariable Texts.GK_VAR = Blocks.GK_VAR
+translateVariable Texts.GM_VAR = Blocks.GM_VAR
 translateVariable Texts.GN_VAR = Blocks.GN_VAR
 translateVariable Texts.GR_VAR = Blocks.GR_VAR
 translateVariable Texts.GX_VAR = Blocks.GX_VAR
@@ -51,7 +49,7 @@ translateRawAdjective0 Texts.GEVEN = Blocks.GEVEN
 translateRawAdjective0 Texts.GNONNEGATIVE = Blocks.GNONNEGATIVE
 
 translateRawAdjective0ToRel1 :: Texts.GrawAdjective0 -> Blocks.Grel1
-translateRawAdjective0ToRel1 x = GrA0ToRel1 $ translateRawAdjective0 x 
+translateRawAdjective0ToRel1 x = GrA0ToRel1 $ translateRawAdjective0 x
 
 translateRawAdjective1 :: Texts.GrawAdjective1 -> Blocks.GrawAdjective1
 translateRawAdjective1 Texts.GLESS_THAN = Blocks.GLESS_THAN
@@ -62,7 +60,7 @@ translateRawAdjective1 Texts.GNOT_EQUAL = Blocks.GNOT_EQUAL
 translateRawAdjective1 Texts.GEQUAL = Blocks.GEQUAL
 
 translateRawAdjective1ToRel2 :: Texts.GrawAdjective1 -> Blocks.Grel2
-translateRawAdjective1ToRel2 x = GrA1ToRel2 $ translateRawAdjective1 x 
+translateRawAdjective1ToRel2 x = GrA1ToRel2 $ translateRawAdjective1 x
 
 -- Translating Names to the corresponding variable (fully done)
 translateNames :: Gnames -> Blocks.Gvariable

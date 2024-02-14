@@ -74,6 +74,15 @@ mkStmFromRAttr x (GdoesPrToRAttr dpred) = GtermDoesPredToStm (GdefTermToTerm (Gv
 mkStmFromRAttr _ (GstmToRAttr stm) = stm
 
 
+
+-- helper function that takes a stm of the form x is an integer such that X and spits out x is an integer and the X :: statement.
+-- 1. x is an integer such that X -> x is an integer :: Statement
+extractHeadStatement :: Gstatement -> Gstatement
+extractHeadStatement (GtermDoesPredToStm (GdefTermToTerm (GvarToDefTerm x)) (GisAPredToDPred (GclNounToIs_aPred pol (GprClNounRAttrToNotion pcn _)))) = GtermDoesPredToStm (GdefTermToTerm (GvarToDefTerm x)) (GisAPredToDPred (GclNounToIs_aPred pol (GprClNounToNotion pcn)))
+-- 2. x is an integer such that X -> x :: Statement
+extractRAStatement :: Gstatement -> Gstatement
+extractRAStatement (GtermDoesPredToStm (GdefTermToTerm (GvarToDefTerm x)) (GisAPredToDPred (GclNounToIs_aPred pol (GprClNounRAttrToNotion pcn (GstmToRAttr stm))))) = stm
+
 ----- Utilities for translations
 checkPolarity :: Gpolarity -> (Gproposition -> Gproposition)
 checkPolarity Gneg = Gnot
