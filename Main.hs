@@ -17,21 +17,21 @@ main = do
   let lean = head $ languages leanGr
   x <- readFile "prompt.txt"
   let s = preprocess x
-  putStrLn ("Preprocessing: " ++ s) 
+  putStr ("Preprocessing: " ++ s) 
   let tree = head $ parse engGr eng (extract $ readType "text") s
 
   -- Giving names to all notions 
   let namedTree = changeMetaToInt tree
-  putStrLn ("added variable names: " ++ linearize engGr eng namedTree)
+  putStrLn ("Added variable names: " ++ linearize engGr eng namedTree)
 
   -- simplification
   let simplifiedTree = Texts.gf $ simplifyText (Texts.fg namedTree :: Texts.Gtext)
-  putStrLn ("simplified: " ++ linearize engGr eng simplifiedTree)
+  putStrLn ("Simplified: " ++ linearize engGr eng simplifiedTree)
 
   -- translating
   let translatedTree = Blocks.gf $ translateText (Texts.fg simplifiedTree :: Texts.Gtext)
   let rawOutput = linearize leanGr lean translatedTree
 
   -- outputting after post-processing
-  putStrLn ("translated: "++ postprocess rawOutput)
+  putStrLn ("Translated: "++ postprocess rawOutput)
   return ()
