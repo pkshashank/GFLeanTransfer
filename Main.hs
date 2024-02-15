@@ -30,5 +30,9 @@ main = do
 
   -- translating
   let translatedTree = Blocks.gf $ translateText (Texts.fg simplifiedTree :: Texts.Gtext)
-  putStrLn ("translated - "++ linearize leanGr lean translatedTree)
+  let rawOutput = linearize leanGr lean translatedTree
+
+  -- outputting after post-processing
+  putStrLn ("translated: "++ postprocess rawOutput)
   return ()
+
