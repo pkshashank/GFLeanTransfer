@@ -29,7 +29,7 @@ concrete LogicPropLean of LogicProp = LexiconEng ** open Prelude in {
 
         varToEntity = id SS ;
         intToEntity = id SS ;
-        intToVar x = parenss (prefixSS "x" x) ;
+        intToVar x = ss ("x" ++ BIND ++ x.s) ;
      lin
         rel1ToProp r e = {s = r.s1 ++ e.s ++ r.s2} ;
 

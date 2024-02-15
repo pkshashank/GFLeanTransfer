@@ -1,14 +1,27 @@
 module Processing where
 import Data.Char (toLower)
+import Data.List
+import Utilities
 
 -- changes "A1s." to "a1s ."
 preprocess :: String -> String
-preprocess = replaceChar ',' " ," . replaceChar '.' " ." . map toLower
+preprocess = replaceString "," " ," . replaceString "." " ." . map toLower
 
--- relace char with a string in a string
-replaceChar :: Char -> String -> String -> String
-replaceChar x y [] = []
-replaceChar x y (z : ls) =  if x == z
-                                then   y ++ replaceChar x y ls
-                            else 
-                                z : replaceChar x y ls
+
+postprocess :: String -> String
+postprocess = changeQM . replaceString " &+ " ""
+
+-- Replace string `a` with `b` in a string `s`
+replaceString :: String -> String -> String -> String
+replaceString a b s@(x:xs) = if a `isPrefixOf` s
+                                then b ++ replaceString a b (drop (length a) s)
+                            else x : replaceString a b xs
+
+replaceString _ _ [] = []
+
+
+changeQM :: String -> String
+changeQM s@(x : xs) =  if x == '?'
+                        then show (length s) ++ changeQM xs
+                        else x : changeQM xs
+changeQM [] = []
