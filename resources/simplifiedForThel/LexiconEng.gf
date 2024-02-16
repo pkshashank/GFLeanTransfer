@@ -29,8 +29,8 @@ concrete LexiconEng of Lexicon = Utils ** open Prelude in {
         RATIONAL = mkSSL ("rational" ++ ("number"| "numbers"))  "ℚ" ;
  
         LESS_THAN = mkSS2L "less than" "" "<" "" ;
-        LESS_TE = mkSS2L "lesser than or equal to" "" "≤" "" ;
-        GREATER_THAN = mkSS2L "more than" "" ">" "" ;
+        LESS_TE = mkSS2L "less than or equal to" "" "≤" "" ;
+        GREATER_THAN = mkSS2L "greater than" "" ">" "" ;
         GREATER_TE = mkSS2L "greater than or equal to" "" "≥" "" ;
         NOT_EQUAL = mkSS2L "not equal to" "" "≠" "" ;
         EQUAL = mkSS2L "equal to" "" "=" "" ;
