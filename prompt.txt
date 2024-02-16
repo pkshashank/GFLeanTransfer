@@ -1,1 +1,1 @@
-Ex. Assume n is an odd integer more than 1 and x is a rational number less than 0. Then every real number more than n is more than x.
+Ex. 2 is more than 1.
