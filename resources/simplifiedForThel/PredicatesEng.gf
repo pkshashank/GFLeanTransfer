@@ -26,7 +26,7 @@ lin
         prVerbToDPred = cc3 (ss "does") ;
         prVerbMToDPred = cc3 (ss "do") ;
         hasPredToDPred = cc2 (ss ("has" | "have")) ;
-        isPredToDPred = cc2 (ss ("is" | "are" | "")) ;
+        isPredToDPred = cc2 (ss ("is" | "are" )) ;
         isAPredToDPred = cc2 (ss ( "is" | "are")) ;
 
         primAdjToIsPred = cc2 ;
