@@ -1,1 +1,1 @@
-Ex. Assume x is an even integer greater than 32. Then x is greater than every integer less than 32.
+Ex. Assume x is a positive integer. Then x is not negative.

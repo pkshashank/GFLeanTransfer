@@ -94,6 +94,7 @@ data Gproposition =
 
 data GrawAdjective0 =
    GEVEN 
+ | GNEGATIVE 
  | GNONNEGATIVE 
  | GODD 
  | GPOSITIVE 
@@ -293,6 +294,7 @@ instance Gf Gproposition where
 
 instance Gf GrawAdjective0 where
   gf GEVEN = mkApp (mkCId "EVEN") []
+  gf GNEGATIVE = mkApp (mkCId "NEGATIVE") []
   gf GNONNEGATIVE = mkApp (mkCId "NONNEGATIVE") []
   gf GODD = mkApp (mkCId "ODD") []
   gf GPOSITIVE = mkApp (mkCId "POSITIVE") []
@@ -300,6 +302,7 @@ instance Gf GrawAdjective0 where
   fg t =
     case unApp t of
       Just (i,[]) | i == mkCId "EVEN" -> GEVEN 
+      Just (i,[]) | i == mkCId "NEGATIVE" -> GNEGATIVE 
       Just (i,[]) | i == mkCId "NONNEGATIVE" -> GNONNEGATIVE 
       Just (i,[]) | i == mkCId "ODD" -> GODD 
       Just (i,[]) | i == mkCId "POSITIVE" -> GPOSITIVE 
