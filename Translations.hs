@@ -47,6 +47,7 @@ translateRawAdjective0 Texts.GPOSITIVE = Blocks.GPOSITIVE
 translateRawAdjective0 Texts.GODD = Blocks.GODD
 translateRawAdjective0 Texts.GEVEN = Blocks.GEVEN
 translateRawAdjective0 Texts.GNONNEGATIVE = Blocks.GNONNEGATIVE
+translateRawAdjective0 Texts.GNEGATIVE = Blocks.GNEGATIVE
 
 translateRawAdjective0ToRel1 :: Texts.GrawAdjective0 -> Blocks.Grel1
 translateRawAdjective0ToRel1 x = GrA0ToRel1 $ translateRawAdjective0 x

@@ -40,6 +40,7 @@ abstract Lexicon = {
         ODD : rawAdjective0 ;
         EVEN : rawAdjective0 ;
         NONNEGATIVE : rawAdjective0 ;
+        NEGATIVE: rawAdjective0 ;
 
         --SAMEPARITY : rawAdjectiveM0 ;
         --OPPPARITY : rawAdjectiveM0 ; 

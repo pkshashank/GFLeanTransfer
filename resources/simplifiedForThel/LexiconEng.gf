@@ -40,6 +40,7 @@ concrete LexiconEng of Lexicon = Utils ** open Prelude in {
         ODD = mkSSL "odd" "odd" ;
         EVEN = mkSSL "even" "even" ;
         NONNEGATIVE = mkSSL "nonnegative" "nneg" ;
+        NEGATIVE = mkSSL "negative" "neg" ;
 
         --SAMEPARITY = mkSSL "have same parity" "samePar" ;
         --OPPPARITY = mkSSL "have opposite parity" "oppPar" ;
