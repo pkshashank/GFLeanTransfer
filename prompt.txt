@@ -1,1 +1,1 @@
-Ex. Assume x is a positive integer. Then x is not negative.
+Ex. Assume x is a real number less than 0. Then no nonnegative integer a such that a is positive is not greater than x.

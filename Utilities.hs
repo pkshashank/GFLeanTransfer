@@ -83,6 +83,8 @@ extractHeadStatement (GtermDoesPredToStm (GdefTermToTerm (GvarToDefTerm x)) (Gis
 extractRAStatement :: Gstatement -> Gstatement
 extractRAStatement (GtermDoesPredToStm (GdefTermToTerm (GvarToDefTerm x)) (GisAPredToDPred (GclNounToIs_aPred pol (GprClNounRAttrToNotion pcn (GstmToRAttr stm))))) = stm
 
+
+
 ----- Utilities for translations
 checkPolarity :: Gpolarity -> (Gproposition -> Gproposition)
 checkPolarity Gneg = Gnot
