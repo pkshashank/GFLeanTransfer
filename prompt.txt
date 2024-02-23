@@ -1,1 +1,1 @@
-Ex. Assume x is a real number less than 0. Then no nonnegative integer a such that a is positive is not greater than x.
+Ex. Assume x is an even integer greater than 32. Then x is greater than every integer less than 32.
