@@ -1,19 +1,19 @@
 INPUT : 
-Ex. Assume x is a rational number equal to ( 2 * 2 ). Then x is greater than 3.
+Ex. Assume x is a rational number. Assume x is equal to 2 + 2 * 2. Then x is greater than 3.
 OUTPUT :
-Preprocessing: ex . assume x is a rational number equal to ( 2 * 2 ) . then x is greater than 3 .
-Added variable names: ex . assume x is a rational number ( x 6 ) equal to ( 2 * 2 ) . then x is greater than 3 .
-Simplified: ex . assume x is a rational number x . assume x is equal to ( 2 * 2 ) . then x is greater than 3 .
-Translated: example ( x : ℚ ) ( h36 : x = ( 2 * 2 ) ) : x > 3 := sorry
+Preprocessing: ex . assume x is a rational number . assume x is equal to 2 + 2 * 2 . then x is greater than 3 .
+Added variable names: ex . assume x is a rational number ( x 6 ) . assume x is equal to 2 + 2 * 2 . then x is greater than 3 .
+Simplified: ex . assume x is a rational number x . assume x is equal to 2 + 2 * 2 . then x is greater than 3 .
+Translated: example (x : ℚ) (h35 : x = 2 + 2 * 2) : x > 3 := sorry
 
 
 INPUT:
-Ex. Every odd integer greater than 2 is greater than 1. 
+Ex. Every odd integer greater than 2 is greater than 1.
 OUTPUT:
-Preprocessing: ex . every odd integer greater than 2 is greater than 1 . 
+Preprocessing: ex . every odd integer greater than 2 is greater than 1 .
 Added variable names: ex . then every odd integer ( x 6 ) greater than 2 is greater than 1 .
 Simplified: ex . then for every integer ( x 6 ) such that ( x 6 ) is odd and ( x 6 ) is greater than 2 , ( x 6 ) is greater than 1 .
-Translated: example : ∀ ( x6 : ℤ ), ( ( odd x6 ∧ x6 > 2 ) → x6 > 1 ) := sorry
+Translated: example : ∀ (x6 : ℤ), ((odd x6 ∧ x6 > 2) → x6 > 1) := sorry
 
 
 INPUT:
@@ -22,7 +22,7 @@ OUTPUT:
 Preprocessing: ex . assume y is an integer and for no positive integer x , y is greater than x . then y is less than or equal to 1 .
 Added variable names: ex . assume y is a integer ( x 6 ) and for no positive integer x , y is greater than x . then y is less than or equal to 1 .
 Simplified: ex . assume y is a integer y . assume for no integer x such that x is positive , y is greater than x . then y is less than or equal to 1 .
-Translated: example ( y : ℤ ) ( h59 : ∀ ( x : ℤ ), ( pos x → ( ¬ y > x ) ) ) : y ≤ 1 := sorry
+Translated: example (y : ℤ) (h52 : ∀ (x : ℤ), (pos x → (¬ y > x))) : y ≤ 1 := sorry
 
 
 INPUT:
@@ -31,7 +31,7 @@ OUTPUT:
 Preprocessing: ex . assume x is a real number less than 0 . then no nonnegative integer a such that a is positive is not greater than x .
 Added variable names: ex . assume x is a real number ( x 6 ) less than 0 . then no nonnegative integer a such that a is positive is not greater than x .
 Simplified: ex . assume x is a real number x . assume x is less than 0 . then for no integer a such that a is nonnegative and a is positive , a is not greater than x .
-Translated: example ( x : ℝ ) ( h78 : x < 0 ) : ∀ ( a : ℤ ), ( ( nneg a ∧ pos a ) → ( ¬ ( ¬ a > x ) ) ) := sorry
+Translated: example (x : ℝ) (h67 : x < 0) : ∀ (a : ℤ), ((nneg a ∧ pos a) → (¬ (¬ a > x))) := sorry
 
 INPUT:
 Ex. Assume x is an even integer greater than 32. Then every integer greater than x is greater than 32.
@@ -39,7 +39,7 @@ OUTPUT:
 Preprocessing: ex . assume x is an even integer greater than 32 . then every integer greater than x is greater than 32 .
 Added variable names: ex . assume x is a even integer ( x 9 ) greater than 32 . then every integer ( x 29 ) greater than x is greater than 32 .
 Simplified: ex . assume x is a integer x . assume x is even . assume x is greater than 32 . then for every integer ( x 29 ) such that ( x 29 ) is greater than x , ( x 29 ) is greater than 32 .
-Translated: example ( x : ℤ ) ( h77 : even x ) ( h61 : x > 32 ) : ∀ ( x29 : ℤ ), ( x29 > x → x29 > 32 ) := sorry
+Translated: example (x : ℤ) (h70 : even x) (h56 : x > 32) : ∀ (x29 : ℤ), (x29 > x → x29 > 32) := sorry
 
 
 INPUT:
@@ -48,7 +48,7 @@ OUTPUT:
 Preprocessing: ex . assume n is an odd integer greater than 1 and x is a rational number less than 0 . then every real number greater than n is greater than x .
 Added variable names: ex . assume n is a odd integer ( x 9 ) greater than 1 and x is a rational number ( x 30 ) less than 0 . then every real number ( x 51 ) greater than n is greater than x .
 Simplified: ex . assume n is a integer n . assume n is odd . assume n is greater than 1 . assume x is a rational number x . assume x is less than 0 . then for every real number ( x 51 ) such that ( x 51 ) is greater than n , ( x 51 ) is greater than x .
-Translated: example ( n : ℤ ) ( h99 : odd n ) ( h84 : n > 1 ) ( x : ℚ ) ( h59 : x < 0 ) : ∀ ( x51 : ℝ ), ( x51 > n → x51 > x ) := sorry
+Translated: example (n : ℤ) (h88 : odd n) (h75 : n > 1) (x : ℚ) (h54 : x < 0) : ∀ (x51 : ℝ), (x51 > n → x51 > x) := sorry
 
 
 INPUT:
@@ -57,6 +57,6 @@ OUTPUT:
 Preprocessing: ex . assume x is an even integer greater than 32 . then x is greater than every integer less than 32 .
 Added variable names: ex . assume x is a even integer ( x 9 ) greater than 32 . then x is greater than every integer ( x 34 ) less than 32 .
 Simplified: ex . assume x is a integer x . assume x is even . assume x is greater than 32 . then for every integer ( x 34 ) such that ( x 34 ) is less than 32 , x is greater than ( x 34 ) .
-Translated: example ( x : ℤ ) ( h77 : even x ) ( h61 : x > 32 ) : ∀ ( x34 : ℤ ), ( x34 < 32 → x > x34 ) := sorry
+Translated: example (x : ℤ) (h70 : even x) (h56 : x > 32) : ∀ (x34 : ℤ), (x34 < 32 → x > x34) := sorry
 
 
