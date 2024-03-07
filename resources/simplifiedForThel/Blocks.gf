@@ -3,7 +3,6 @@ abstract Blocks = LogicProp ** {
         startcat = block ;
     cat
         block ;
-        defBl ;
         exampleBl ;
         assumption ;
         Lassumption ; -- {0}
@@ -17,9 +16,6 @@ abstract Blocks = LogicProp ** {
     
         assToExmBl : Lassumption -> proposition -> exampleBl ;
 
-        assToDefBl : String -> Lassumption -> proposition -> defBl ;
-
-        defBlToBl : defBl -> block ;
         exmBltoBl : exampleBl -> block ; 
 
 }

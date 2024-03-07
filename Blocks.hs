@@ -51,12 +51,7 @@ data Gassumption =
  | GtypeDefToAssump Gvariable Gtype 
   deriving Show
 
-data Gblock =
-   GdefBlToBl GdefBl 
- | GexmBltoBl GexampleBl 
-  deriving Show
-
-data GdefBl = GassToDefBl GString GLassumption Gproposition 
+data Gblock = GexmBltoBl GexampleBl 
   deriving Show
 
 data Gentity =
@@ -185,26 +180,14 @@ instance Gf Gassumption where
       _ -> error ("no assumption " ++ show t)
 
 instance Gf Gblock where
-  gf (GdefBlToBl x1) = mkApp (mkCId "defBlToBl") [gf x1]
   gf (GexmBltoBl x1) = mkApp (mkCId "exmBltoBl") [gf x1]
 
   fg t =
     case unApp t of
-      Just (i,[x1]) | i == mkCId "defBlToBl" -> GdefBlToBl (fg x1)
       Just (i,[x1]) | i == mkCId "exmBltoBl" -> GexmBltoBl (fg x1)
 
 
       _ -> error ("no block " ++ show t)
-
-instance Gf GdefBl where
-  gf (GassToDefBl x1 x2 x3) = mkApp (mkCId "assToDefBl") [gf x1, gf x2, gf x3]
-
-  fg t =
-    case unApp t of
-      Just (i,[x1,x2,x3]) | i == mkCId "assToDefBl" -> GassToDefBl (fg x1) (fg x2) (fg x3)
-
-
-      _ -> error ("no defBl " ++ show t)
 
 instance Gf Gentity where
   gf (Gfun1ToEntity x1 x2) = mkApp (mkCId "fun1ToEntity") [gf x1, gf x2]

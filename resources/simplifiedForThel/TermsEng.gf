@@ -1,30 +1,27 @@
-concrete TermsEng of Terms = NotionsEng ** open Prelude in {
+concrete TermsEng of Terms = NotionsEng ** open Prelude, Formal in {
     lincat
-        term = SS ;
-        quantifiedNotion = SS ;
-        definiteTerm = SS ;
-        constant = SS ;
+        term = TermPrec ;
+        quantifiedNotion = TermPrec ;
+        definiteTerm = TermPrec ;
         
-        primDefiniteNoun = SS ;
+        primDefiniteNoun = TermPrec ;
 
     lin 
-        rN1ToPDNoun r t = {s = (r!E).s1 ++ t.s ++ (r!E).s2} ;
-        rN2ToPDNoun r t1 t2 = {s = (r!E).s1 ++ t1.s ++ (r!E).s2 ++ t2.s ++ (r!E).s3} ;
+        rN1ToPDNoun r t = {s = (r!E).s1 ++ t.s ++ (r!E).s2 ; p = 4} ;
+        rN2ToPDNoun r t1 t2 = {s =  usePrec r.p t1 ++ r.s ++ usePrec r.p t2 ; p = r.p} ;
 
     lin
-       
+        qNotionToTerm = id TermPrec ;
 
-        qNotionToTerm = id SS ;
+        allNotion n = mkPrec 4 ("every" ++ n.s) ;
+        someNotion n = mkPrec 4 ("some" ++ n.s) ;
+        noNotion n = mkPrec 4 ("no" ++ n.s) ;
 
-        allNotion = cc2 (ss "every") ;
-        someNotion = cc2 (ss "some") ;
-        noNotion = cc2 (ss "no") ;
-
-        prDefNounToDefTerm = id SS ;
+        prDefNounToDefTerm = id TermPrec ;
         
-        varToDefTerm = id SS ;
-        intToDefTerm = id SS ;
+        varToDefTerm v = mkPrec 4 v.s ;
+        intToDefTerm i = mkPrec 4 i.s ;
 
-        defTermToTerm = id SS ;
+        defTermToTerm = id TermPrec ;
         
 }

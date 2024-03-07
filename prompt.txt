@@ -1,1 +1,1 @@
-Ex. Assume x is an even integer greater than 32. Then x is greater than every integer less than 32.
+Ex. ( 2 + 2 ) * 3 is equal to 8.
