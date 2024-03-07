@@ -1,4 +1,4 @@
-resource Utils = open Prelude in {
+resource Utils = open Prelude, Formal in {
     param
         Lang = E | L ; -- For English and Lean linearizations
     oper
@@ -11,6 +11,8 @@ resource Utils = open Prelude in {
         SS2L : Type = Lang => SS2 ;
         SS3L : Type = Lang => SS3 ;
         SS4L : Type = Lang => SS4 ;
+
+        SS3Lop : Type = {s : SS3L ; p : Prec} ;
 
 -- Usual operations for records
         -- mkSS1 is just ss
@@ -44,6 +46,8 @@ resource Utils = open Prelude in {
 
             mkSS4L : Str -> Str -> Str -> Str -> SS4L = \e1,e2,e3,e4 -> table {E => mkSS4 e1 e2 e3 e4 ; L => mkSS4 e1 e2 e3 e4} ;
             } ;
+
+        mkSS3Lop : SS3L -> Prec -> SS3Lop = \t,p -> {s = t ; p = p} ;
 
         isType : SS -> SS -> SS = \s1,s2 -> {s = "(" ++ s1.s ++ ":" ++ s2.s ++ ")"} ;
 }

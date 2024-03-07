@@ -207,8 +207,6 @@ data Gvariable =
  | GknownName GInt 
   deriving Show
 
-data Gconstant
-
 data GprimAdjectiveM
 
 data GprimPossessedNoun
@@ -637,14 +635,6 @@ instance Gf Gvariable where
 
 
       _ -> error ("no variable " ++ show t)
-
-instance Show Gconstant
-
-instance Gf Gconstant where
-  gf _ = undefined
-  fg _ = undefined
-
-
 
 instance Show GprimAdjectiveM
 

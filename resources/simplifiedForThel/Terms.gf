@@ -5,8 +5,6 @@ abstract Terms = Notions ** {
         quantifiedNotion ;
 
         definiteTerm ;
-        
-        constant ;
 
         primDefiniteNoun ; -- zeroes, orders of [terms]
 

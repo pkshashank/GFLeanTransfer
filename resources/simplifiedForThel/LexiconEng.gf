@@ -1,10 +1,10 @@
-concrete LexiconEng of Lexicon = Utils ** open Prelude in {
+concrete LexiconEng of Lexicon = Utils ** open Prelude, Formal in {
     lincat
 
         variable = SS ;
         rawNoun0 = SSL ;
         rawNoun1 = SS2L ;
-        rawNoun2 = SS3L ;
+        rawNoun2 = TermPrec ;
 
         rawAdjective0 = SSL ;
         rawAdjective1 = SS2L ;
@@ -45,9 +45,9 @@ concrete LexiconEng of Lexicon = Utils ** open Prelude in {
         --SAMEPARITY = mkSSL "have same parity" "samePar" ;
         --OPPPARITY = mkSSL "have opposite parity" "oppPar" ;
 
-        EXP = mkSS3L "(" "^" ")" ;
-        SUM = mkSS3L "(" "+" ")" ;
-        MINUS = mkSS3L "(" "-" ")" ;
-        PRODUCT = mkSS3L "(" "*" ")" ;
-        FRAC = mkSS3L "(" "/" ")" ;
+        EXP = mkPrec 3 "^";
+        SUM = mkPrec 1 "+";
+        MINUS = mkPrec 1 "-";
+        PRODUCT = mkPrec 2 "*";
+        FRAC = mkPrec 2 "/";
 }
