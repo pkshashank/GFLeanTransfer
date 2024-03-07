@@ -5,11 +5,17 @@ import Utilities
 
 -- changes "A1s." to "a1s ."
 preprocess :: String -> String
-preprocess = replaceString "," " ," . replaceString "." " ." . map toLower
+preprocess = replaceListStrings [("(", "( "),(")"," )"),(",", " ,"),("."," .")]. map toLower
 
 
 postprocess :: String -> String
-postprocess = changeQM . replaceString " &+ " ""
+postprocess = changeQM . replaceListStrings [(" &+ ", ""),("( ","("),(" )",")")]
+
+
+-- Replace [(A,a),(B,b),...] in a string
+replaceListStrings :: [(String, String)] -> String -> String
+replaceListStrings ((a1,a2) : xs) l = replaceString a1 a2 $ replaceListStrings xs l
+replaceListStrings [] l = l 
 
 -- Replace string `a` with `b` in a string `s`
 replaceString :: String -> String -> String -> String
