@@ -45,9 +45,9 @@ concrete LexiconEng of Lexicon = Utils ** open Prelude, Formal in {
         --SAMEPARITY = mkSSL "have same parity" "samePar" ;
         --OPPPARITY = mkSSL "have opposite parity" "oppPar" ;
 
-        EXP = mkPrec 3 "^";
-        SUM = mkPrec 1 "+";
+        EXP = mkPrec 4 "^";
+        SUM = mkPrec 0 "+";
         MINUS = mkPrec 1 "-";
         PRODUCT = mkPrec 2 "*";
-        FRAC = mkPrec 2 "/";
+        FRAC = mkPrec 3 "/";
 }
