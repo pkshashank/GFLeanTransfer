@@ -1,1 +1,1 @@
-Ex. Assume x is a real number. Assume x ^ 2 - 2 * x + 2 is less than or equal to 0. Then x ^ 3 is greater than or equal to 8.
+Ex. Assume x is a real number. Assume x is greater than 0 and x is less than 1. Then 2 * 2 is not even.
