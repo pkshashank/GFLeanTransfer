@@ -1,1 +1,1 @@
-Ex. Assume x is a real number. Assume x is greater than 0 and x is less than 1. Then 2 * 2 is not even.
+Ex. Assume x is a real number. Then x ^ 3 - 5 * x + 1 is positive.
