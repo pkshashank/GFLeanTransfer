@@ -1,4 +1,4 @@
-concrete NotionsEng of Notions = LexiconEng ** open Prelude in {
+concrete NotionsEng of Notions = LexiconEng ** open Prelude, Formal in {
     lincat
         notion = SS ;
         names = SS ;
@@ -7,7 +7,7 @@ concrete NotionsEng of Notions = LexiconEng ** open Prelude in {
         rightAttribute = SS ;
         isPredicate = SS ;
         doesPredicate = SS ;
-        statement = SS ;
+        statement = TermPrec ;
         primSimpleAdjective = SS ;
         primSimpleAdjectiveM = SS ;
         primClassNoun = SS ;
