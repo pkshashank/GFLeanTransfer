@@ -1,1 +1,1 @@
-Ex. Assume n is an integer. Then ((n - 5) * (n + 7)) * (n + 13) is odd iff n is even.
+Ex. Assume x is an integer. Assume y is an integer. Assume z is an integer. Assume ((x is even and y is even) and z is not even or (x is even and y is not even) and z is even) or (x is not even and y is even) and z is even. Then 1 is odd.
