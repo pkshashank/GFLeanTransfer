@@ -8,7 +8,7 @@ concrete TermsEng of Terms = NotionsEng ** open Prelude, Formal in {
 
     lin 
         rN1ToPDNoun r t = {s = (r!E).s1 ++ t.s ++ (r!E).s2 ; p = 4} ;
-        rN2ToPDNoun r t1 t2 = {s =  usePrec r.p t1 ++ r.s ++ usePrec r.p t2 ; p = r.p} ;
+        rN2ToPDNoun r t1 t2 = {s =  usePrec r.p t1 ++ r.s ++ usePrec (nextPrec r.p) t2 ; p = r.p} ;
 
     lin
         qNotionToTerm = id TermPrec ;

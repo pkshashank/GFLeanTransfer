@@ -49,19 +49,10 @@ data GLassumption =
 data Gassumption = GstmToAssumption Gstatement 
   deriving Show
 
-data Gdefiniendum = GstmToDefdum Gstatement 
-  deriving Show
-
-data Gdefiniens = GstmToDefin Gstatement 
-  deriving Show
-
 data GdefiniteTerm =
    GintToDefTerm GInt 
  | GprDefNounToDefTerm GprimDefiniteNoun 
  | GvarToDefTerm Gvariable 
-  deriving Show
-
-data Gdefinition = GassToDefn GLassumption Gdefiniendum Gdefiniens 
   deriving Show
 
 data GdoesPredicate =
@@ -188,9 +179,7 @@ data Gterm =
  | GqNotionToTerm GquantifiedNotion 
   deriving Show
 
-data Gtext =
-   GdefnToText Gdefinition 
- | GthmToText Gexample 
+data Gtext = GthmToText Gexample 
   deriving Show
 
 data Gvariable =
@@ -246,26 +235,6 @@ instance Gf Gassumption where
 
       _ -> error ("no assumption " ++ show t)
 
-instance Gf Gdefiniendum where
-  gf (GstmToDefdum x1) = mkApp (mkCId "stmToDefdum") [gf x1]
-
-  fg t =
-    case unApp t of
-      Just (i,[x1]) | i == mkCId "stmToDefdum" -> GstmToDefdum (fg x1)
-
-
-      _ -> error ("no definiendum " ++ show t)
-
-instance Gf Gdefiniens where
-  gf (GstmToDefin x1) = mkApp (mkCId "stmToDefin") [gf x1]
-
-  fg t =
-    case unApp t of
-      Just (i,[x1]) | i == mkCId "stmToDefin" -> GstmToDefin (fg x1)
-
-
-      _ -> error ("no definiens " ++ show t)
-
 instance Gf GdefiniteTerm where
   gf (GintToDefTerm x1) = mkApp (mkCId "intToDefTerm") [gf x1]
   gf (GprDefNounToDefTerm x1) = mkApp (mkCId "prDefNounToDefTerm") [gf x1]
@@ -279,16 +248,6 @@ instance Gf GdefiniteTerm where
 
 
       _ -> error ("no definiteTerm " ++ show t)
-
-instance Gf Gdefinition where
-  gf (GassToDefn x1 x2 x3) = mkApp (mkCId "assToDefn") [gf x1, gf x2, gf x3]
-
-  fg t =
-    case unApp t of
-      Just (i,[x1,x2,x3]) | i == mkCId "assToDefn" -> GassToDefn (fg x1) (fg x2) (fg x3)
-
-
-      _ -> error ("no definition " ++ show t)
 
 instance Gf GdoesPredicate where
   gf (GhasPredToDPred x1) = mkApp (mkCId "hasPredToDPred") [gf x1]
@@ -595,12 +554,10 @@ instance Gf Gterm where
       _ -> error ("no term " ++ show t)
 
 instance Gf Gtext where
-  gf (GdefnToText x1) = mkApp (mkCId "defnToText") [gf x1]
   gf (GthmToText x1) = mkApp (mkCId "thmToText") [gf x1]
 
   fg t =
     case unApp t of
-      Just (i,[x1]) | i == mkCId "defnToText" -> GdefnToText (fg x1)
       Just (i,[x1]) | i == mkCId "thmToText" -> GthmToText (fg x1)
 
 
