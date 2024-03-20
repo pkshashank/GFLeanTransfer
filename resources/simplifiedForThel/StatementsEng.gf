@@ -1,10 +1,10 @@
     concrete StatementsEng of Statements =  PredicatesEng ** open Prelude, Formal in {
    
     lin
-        andStm s1 s2 = mkPrec 3 (usePrec 3 s1 ++ ("and" | ",") ++ usePrec 3 s2) ;
-        orStm s1 s2 = mkPrec 2 (usePrec 2 s1 ++ "or" ++ usePrec 2 s2) ;
-        ifThenStm s1 s2 = mkPrec 1 ("if" ++ usePrec 1 s1 ++ "then" ++ usePrec 1 s2) ;
-        iffStm s1 s2 = mkPrec 0 (usePrec 0 s1 ++ "iff" ++ usePrec 0 s2) ;
+        andStm s1 s2 = mkPrec 3 (usePrec 3 s1 ++ ("and" | ",") ++ usePrec 4 s2) ;
+        orStm s1 s2 = mkPrec 2 (usePrec 2 s1 ++ "or" ++ usePrec 3 s2) ;
+        ifThenStm s1 s2 = mkPrec 1 ("if" ++ usePrec 1 s1 ++ "then" ++ usePrec 2 s2) ;
+        iffStm s1 s2 = mkPrec 0 (usePrec 0 s1 ++ "iff" ++ usePrec 1 s2) ;
         notStm stm = mkPrec 4 ("it's not that" ++ stm.s)  ;
 
         qNotStmToStm qn stm = mkPrec 4 ( "for" ++ qn.s ++ "," ++ stm.s );
