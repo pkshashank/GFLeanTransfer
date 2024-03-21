@@ -18,8 +18,8 @@ simplifyLassumption x = x
 
 -- Splitting is first separating the such thats and then the Ands
 splitLassumption :: GLassumption -> GLassumption
+--splitLassumption = splitAndsLassumption
 splitLassumption = splitAndsLassumption . splitSuchThatLassumption . splitAndsLassumption
---splitLassumption = splitSuchThatLassumption . splitAndsLassumption
 
 -- `Assume A and B` becomes `Assume A. Assume B` with B split too
 splitAndsLassumption :: GLassumption -> GLassumption

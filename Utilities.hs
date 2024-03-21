@@ -84,7 +84,6 @@ extractRAStatement :: Gstatement -> Gstatement
 extractRAStatement (GtermDoesPredToStm (GdefTermToTerm (GvarToDefTerm x)) (GisAPredToDPred (GclNounToIs_aPred pol (GprClNounRAttrToNotion pcn (GstmToRAttr stm))))) = stm
 
 
-
 ----- Utilities for translations
 checkPolarity :: Gpolarity -> (Gproposition -> Gproposition)
 checkPolarity Gneg = Gnot
@@ -94,3 +93,4 @@ checkPolarity _ = id
 putNameInDoesPred :: Texts.Gnames -> GdoesPredicate -> GdoesPredicate
 putNameInDoesPred x (GisAPredToDPred (GclNounToIs_aPred pol not)) = GisAPredToDPred (GclNounToIs_aPred pol (putNameInNotion x not))
 putNameInDoesPred _ y = y 
+
