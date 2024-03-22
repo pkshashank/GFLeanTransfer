@@ -2,13 +2,13 @@ abstract Lexicon = {
     cat
         variable ;
         rawNoun0 ;
-        rawNoun1 ;
+        --rawNoun1 ;
         rawNoun2 ;
 
         rawAdjective0 ;
         rawAdjective1 ;
-        rawAdjective2 ;
-        rawAdjectiveM0 ;
+        --rawAdjective2 ;
+        --rawAdjectiveM0 ;
 
 
     fun -- Real Lexicon starts here 

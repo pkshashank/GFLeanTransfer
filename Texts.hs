@@ -56,19 +56,11 @@ data GdefiniteTerm =
   deriving Show
 
 data GdoesPredicate =
-   GhasPredToDPred GhasPredicate 
- | GisAPredToDPred Gis_aPredicate 
+   GisAPredToDPred Gis_aPredicate 
  | GisPredToDPred GisPredicate 
- | GprVerbMToDPred Gpolarity GprimVerbM 
- | GprVerbToDPred Gpolarity GprimVerb 
   deriving Show
 
 data Gexample = GassToExm GLassumption Gstatement 
-  deriving Show
-
-data GhasPredicate =
-   GpossNTohasPred GpossessedNoun 
- | GpossNnotTohasPred GpossessedNoun 
   deriving Show
 
 data GisPredicate = GprimAdjToIsPred Gpolarity GprimAdjective 
@@ -97,23 +89,15 @@ data Gpolarity =
  | Gpos 
   deriving Show
 
-data GpossessedNoun =
-   GprimPosNounRAttrToPosNoun GleftAttribute GprimPossessedNoun GrightAttribute 
- | GprimPosNounToPosNoun GleftAttribute GprimPossessedNoun 
-  deriving Show
-
 data GprimAdjective =
    GrA0ToPAdj GrawAdjective0 
  | GrA1ToPAdj GrawAdjective1 Gterm 
- | GrA2ToPAdj GrawAdjective2 Gterm Gterm 
   deriving Show
 
 data GprimClassNoun = GrN0ToPcNoun GrawNoun0 Gnames 
   deriving Show
 
-data GprimDefiniteNoun =
-   GrN1ToPDNoun GrawNoun1 Gterm 
- | GrN2ToPDNoun GrawNoun2 Gterm Gterm 
+data GprimDefiniteNoun = GrN2ToPDNoun GrawNoun2 Gterm Gterm 
   deriving Show
 
 data GprimSimpleAdjective = GrA0ToPSAdj GrawAdjective0 
@@ -196,22 +180,6 @@ data Gvariable =
  | GknownName GInt 
   deriving Show
 
-data GprimAdjectiveM
-
-data GprimPossessedNoun
-
-data GprimSimpleAdjectiveM
-
-data GprimVerb
-
-data GprimVerbM
-
-data GrawAdjective2
-
-data GrawAdjectiveM0
-
-data GrawNoun1
-
 
 instance Gf GLassumption where
   gf GBassumption = mkApp (mkCId "Bassumption") []
@@ -250,19 +218,13 @@ instance Gf GdefiniteTerm where
       _ -> error ("no definiteTerm " ++ show t)
 
 instance Gf GdoesPredicate where
-  gf (GhasPredToDPred x1) = mkApp (mkCId "hasPredToDPred") [gf x1]
   gf (GisAPredToDPred x1) = mkApp (mkCId "isAPredToDPred") [gf x1]
   gf (GisPredToDPred x1) = mkApp (mkCId "isPredToDPred") [gf x1]
-  gf (GprVerbMToDPred x1 x2) = mkApp (mkCId "prVerbMToDPred") [gf x1, gf x2]
-  gf (GprVerbToDPred x1 x2) = mkApp (mkCId "prVerbToDPred") [gf x1, gf x2]
 
   fg t =
     case unApp t of
-      Just (i,[x1]) | i == mkCId "hasPredToDPred" -> GhasPredToDPred (fg x1)
       Just (i,[x1]) | i == mkCId "isAPredToDPred" -> GisAPredToDPred (fg x1)
       Just (i,[x1]) | i == mkCId "isPredToDPred" -> GisPredToDPred (fg x1)
-      Just (i,[x1,x2]) | i == mkCId "prVerbMToDPred" -> GprVerbMToDPred (fg x1) (fg x2)
-      Just (i,[x1,x2]) | i == mkCId "prVerbToDPred" -> GprVerbToDPred (fg x1) (fg x2)
 
 
       _ -> error ("no doesPredicate " ++ show t)
@@ -276,18 +238,6 @@ instance Gf Gexample where
 
 
       _ -> error ("no example " ++ show t)
-
-instance Gf GhasPredicate where
-  gf (GpossNTohasPred x1) = mkApp (mkCId "possNTohasPred") [gf x1]
-  gf (GpossNnotTohasPred x1) = mkApp (mkCId "possNnotTohasPred") [gf x1]
-
-  fg t =
-    case unApp t of
-      Just (i,[x1]) | i == mkCId "possNTohasPred" -> GpossNTohasPred (fg x1)
-      Just (i,[x1]) | i == mkCId "possNnotTohasPred" -> GpossNnotTohasPred (fg x1)
-
-
-      _ -> error ("no hasPredicate " ++ show t)
 
 instance Gf GisPredicate where
   gf (GprimAdjToIsPred x1 x2) = mkApp (mkCId "primAdjToIsPred") [gf x1, gf x2]
@@ -359,28 +309,14 @@ instance Gf Gpolarity where
 
       _ -> error ("no polarity " ++ show t)
 
-instance Gf GpossessedNoun where
-  gf (GprimPosNounRAttrToPosNoun x1 x2 x3) = mkApp (mkCId "primPosNounRAttrToPosNoun") [gf x1, gf x2, gf x3]
-  gf (GprimPosNounToPosNoun x1 x2) = mkApp (mkCId "primPosNounToPosNoun") [gf x1, gf x2]
-
-  fg t =
-    case unApp t of
-      Just (i,[x1,x2,x3]) | i == mkCId "primPosNounRAttrToPosNoun" -> GprimPosNounRAttrToPosNoun (fg x1) (fg x2) (fg x3)
-      Just (i,[x1,x2]) | i == mkCId "primPosNounToPosNoun" -> GprimPosNounToPosNoun (fg x1) (fg x2)
-
-
-      _ -> error ("no possessedNoun " ++ show t)
-
 instance Gf GprimAdjective where
   gf (GrA0ToPAdj x1) = mkApp (mkCId "rA0ToPAdj") [gf x1]
   gf (GrA1ToPAdj x1 x2) = mkApp (mkCId "rA1ToPAdj") [gf x1, gf x2]
-  gf (GrA2ToPAdj x1 x2 x3) = mkApp (mkCId "rA2ToPAdj") [gf x1, gf x2, gf x3]
 
   fg t =
     case unApp t of
       Just (i,[x1]) | i == mkCId "rA0ToPAdj" -> GrA0ToPAdj (fg x1)
       Just (i,[x1,x2]) | i == mkCId "rA1ToPAdj" -> GrA1ToPAdj (fg x1) (fg x2)
-      Just (i,[x1,x2,x3]) | i == mkCId "rA2ToPAdj" -> GrA2ToPAdj (fg x1) (fg x2) (fg x3)
 
 
       _ -> error ("no primAdjective " ++ show t)
@@ -396,12 +332,10 @@ instance Gf GprimClassNoun where
       _ -> error ("no primClassNoun " ++ show t)
 
 instance Gf GprimDefiniteNoun where
-  gf (GrN1ToPDNoun x1 x2) = mkApp (mkCId "rN1ToPDNoun") [gf x1, gf x2]
   gf (GrN2ToPDNoun x1 x2 x3) = mkApp (mkCId "rN2ToPDNoun") [gf x1, gf x2, gf x3]
 
   fg t =
     case unApp t of
-      Just (i,[x1,x2]) | i == mkCId "rN1ToPDNoun" -> GrN1ToPDNoun (fg x1) (fg x2)
       Just (i,[x1,x2,x3]) | i == mkCId "rN2ToPDNoun" -> GrN2ToPDNoun (fg x1) (fg x2) (fg x3)
 
 
@@ -592,69 +526,5 @@ instance Gf Gvariable where
 
 
       _ -> error ("no variable " ++ show t)
-
-instance Show GprimAdjectiveM
-
-instance Gf GprimAdjectiveM where
-  gf _ = undefined
-  fg _ = undefined
-
-
-
-instance Show GprimPossessedNoun
-
-instance Gf GprimPossessedNoun where
-  gf _ = undefined
-  fg _ = undefined
-
-
-
-instance Show GprimSimpleAdjectiveM
-
-instance Gf GprimSimpleAdjectiveM where
-  gf _ = undefined
-  fg _ = undefined
-
-
-
-instance Show GprimVerb
-
-instance Gf GprimVerb where
-  gf _ = undefined
-  fg _ = undefined
-
-
-
-instance Show GprimVerbM
-
-instance Gf GprimVerbM where
-  gf _ = undefined
-  fg _ = undefined
-
-
-
-instance Show GrawAdjective2
-
-instance Gf GrawAdjective2 where
-  gf _ = undefined
-  fg _ = undefined
-
-
-
-instance Show GrawAdjectiveM0
-
-instance Gf GrawAdjectiveM0 where
-  gf _ = undefined
-  fg _ = undefined
-
-
-
-instance Show GrawNoun1
-
-instance Gf GrawNoun1 where
-  gf _ = undefined
-  fg _ = undefined
-
-
 
 

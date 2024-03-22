@@ -17,7 +17,7 @@ abstract Notions = Lexicon **  {
         statement ;
         
         primSimpleAdjective ; -- Adjectives with no argument places, e.g. prime, empty, etc.
-        primSimpleAdjectiveM ; -- Adjectives which are defined for plurals but take no argument, e.g. equal, parallel, disjoint etc.
+        --primSimpleAdjectiveM ; -- Adjectives which are defined for plurals but take no argument, e.g. equal, parallel, disjoint etc.
         primClassNoun ; -- e.g. elements [names] of [terms]
 
 

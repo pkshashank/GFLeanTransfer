@@ -79,12 +79,12 @@ simplifyNotion (GprLAttrClNounRAttrToNotion lattr prc rattr) = GprClNounRAttrToN
 simplifyNotion x = x
 
 simplifyPrDefNoun :: GprimDefiniteNoun -> GprimDefiniteNoun
-simplifyPrDefNoun (GrN1ToPDNoun r t) = GrN1ToPDNoun r (simplifyTerm t)
+--simplifyPrDefNoun (GrN1ToPDNoun r t) = GrN1ToPDNoun r (simplifyTerm t)
 simplifyPrDefNoun (GrN2ToPDNoun r t1 t2) = GrN2ToPDNoun r (simplifyTerm t1) (simplifyTerm t2)
 
 simplifyPrAdjective :: GprimAdjective -> GprimAdjective
 simplifyPrAdjective (GrA1ToPAdj r t) = GrA1ToPAdj r (simplifyTerm t)
-simplifyPrAdjective (GrA2ToPAdj r t1 t2) = GrA2ToPAdj r (simplifyTerm t1) (simplifyTerm t2)
+--simplifyPrAdjective (GrA2ToPAdj r t1 t2) = GrA2ToPAdj r (simplifyTerm t1) (simplifyTerm t2)
 simplifyPrAdjective x = x
 
 simplifyDoesPred :: GdoesPredicate -> GdoesPredicate

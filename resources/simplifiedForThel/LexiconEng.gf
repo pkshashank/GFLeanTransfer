@@ -3,13 +3,10 @@ concrete LexiconEng of Lexicon = Utils ** open Prelude, Formal in {
 
         variable = SS ;
         rawNoun0 = SSL ;
-        rawNoun1 = SS2L ;
         rawNoun2 = TermPrec ;
 
         rawAdjective0 = SSL ;
         rawAdjective1 = SS2L ;
-        rawAdjective2 = SS3L ;
-        rawAdjectiveM0 = SSL ;
 
 
     lin

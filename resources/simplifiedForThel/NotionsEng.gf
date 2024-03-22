@@ -9,7 +9,6 @@ concrete NotionsEng of Notions = LexiconEng ** open Prelude, Formal in {
         doesPredicate = SS ;
         statement = TermPrec ;
         primSimpleAdjective = SS ;
-        primSimpleAdjectiveM = SS ;
         primClassNoun = SS ;
 
     lin
