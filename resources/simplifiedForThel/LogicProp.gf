@@ -16,16 +16,16 @@ abstract LogicProp = Lexicon ** {
     fun
         rN0ToType : rawNoun0 -> type ;
 
-        rN1ToFun1 : rawNoun1 -> fun1 ;
+        --rN1ToFun1 : rawNoun1 -> fun1 ;
         
         rN2ToFun2 : rawNoun2 -> fun2 ;
 
         rA0ToRel1 : rawAdjective0 -> rel1 ;
 
         rA1ToRel2 : rawAdjective1 -> rel2 ;
-        rAM0ToRel2 : rawAdjectiveM0 -> rel2 ;
+        --rAM0ToRel2 : rawAdjectiveM0 -> rel2 ;
 
-        rA2ToRel3 : rawAdjective2 -> rel3 ;
+        --rA2ToRel3 : rawAdjective2 -> rel3 ;
 
         varToEntity : variable -> entity ;
         intToEntity : Int -> entity ;

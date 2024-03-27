@@ -4,7 +4,7 @@ abstract Notions = Lexicon **  {
 
         names ;
 
-        variable ;
+        --variable ;
 
         leftAttribute ;
 

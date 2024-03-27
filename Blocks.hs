@@ -65,9 +65,6 @@ data Gentity =
 data GexampleBl = GassToExmBl GLassumption Gproposition 
   deriving Show
 
-data Gfun1 = GrN1ToFun1 GrawNoun1 
-  deriving Show
-
 data Gfun2 = GrN2ToFun2 GrawNoun2 
   deriving Show
 
@@ -121,12 +118,7 @@ data GrawNoun2 =
 data Grel1 = GrA0ToRel1 GrawAdjective0 
   deriving Show
 
-data Grel2 =
-   GrA1ToRel2 GrawAdjective1 
- | GrAM0ToRel2 GrawAdjectiveM0 
-  deriving Show
-
-data Grel3 = GrA2ToRel3 GrawAdjective2 
+data Grel2 = GrA1ToRel2 GrawAdjective1 
   deriving Show
 
 data Gtype = GrN0ToType GrawNoun0 
@@ -146,13 +138,11 @@ data Gvariable =
  | GintToVar GInt 
   deriving Show
 
+data Gfun1
+
 data Gfun3
 
-data GrawAdjective2
-
-data GrawAdjectiveM0
-
-data GrawNoun1
+data Grel3
 
 
 instance Gf GLassumption where
@@ -216,16 +206,6 @@ instance Gf GexampleBl where
 
 
       _ -> error ("no exampleBl " ++ show t)
-
-instance Gf Gfun1 where
-  gf (GrN1ToFun1 x1) = mkApp (mkCId "rN1ToFun1") [gf x1]
-
-  fg t =
-    case unApp t of
-      Just (i,[x1]) | i == mkCId "rN1ToFun1" -> GrN1ToFun1 (fg x1)
-
-
-      _ -> error ("no fun1 " ++ show t)
 
 instance Gf Gfun2 where
   gf (GrN2ToFun2 x1) = mkApp (mkCId "rN2ToFun2") [gf x1]
@@ -357,25 +337,13 @@ instance Gf Grel1 where
 
 instance Gf Grel2 where
   gf (GrA1ToRel2 x1) = mkApp (mkCId "rA1ToRel2") [gf x1]
-  gf (GrAM0ToRel2 x1) = mkApp (mkCId "rAM0ToRel2") [gf x1]
 
   fg t =
     case unApp t of
       Just (i,[x1]) | i == mkCId "rA1ToRel2" -> GrA1ToRel2 (fg x1)
-      Just (i,[x1]) | i == mkCId "rAM0ToRel2" -> GrAM0ToRel2 (fg x1)
 
 
       _ -> error ("no rel2 " ++ show t)
-
-instance Gf Grel3 where
-  gf (GrA2ToRel3 x1) = mkApp (mkCId "rA2ToRel3") [gf x1]
-
-  fg t =
-    case unApp t of
-      Just (i,[x1]) | i == mkCId "rA2ToRel3" -> GrA2ToRel3 (fg x1)
-
-
-      _ -> error ("no rel3 " ++ show t)
 
 instance Gf Gtype where
   gf (GrN0ToType x1) = mkApp (mkCId "rN0ToType") [gf x1]
@@ -417,6 +385,14 @@ instance Gf Gvariable where
 
       _ -> error ("no variable " ++ show t)
 
+instance Show Gfun1
+
+instance Gf Gfun1 where
+  gf _ = undefined
+  fg _ = undefined
+
+
+
 instance Show Gfun3
 
 instance Gf Gfun3 where
@@ -425,25 +401,9 @@ instance Gf Gfun3 where
 
 
 
-instance Show GrawAdjective2
+instance Show Grel3
 
-instance Gf GrawAdjective2 where
-  gf _ = undefined
-  fg _ = undefined
-
-
-
-instance Show GrawAdjectiveM0
-
-instance Gf GrawAdjectiveM0 where
-  gf _ = undefined
-  fg _ = undefined
-
-
-
-instance Show GrawNoun1
-
-instance Gf GrawNoun1 where
+instance Gf Grel3 where
   gf _ = undefined
   fg _ = undefined
 

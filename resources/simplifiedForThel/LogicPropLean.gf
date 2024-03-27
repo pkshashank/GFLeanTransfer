@@ -15,7 +15,7 @@ concrete LogicPropLean of LogicProp = LexiconEng ** open Prelude in {
     lin
         rN0ToType rN0 = rN0!L ;
 
-        rN1ToFun1 rN1 = rN1!L ;
+        --rN1ToFun1 rN1 = rN1!L ;
 
         rN2ToFun2 rn2 = ss rn2.s  ;
 
@@ -23,9 +23,9 @@ concrete LogicPropLean of LogicProp = LexiconEng ** open Prelude in {
 
         rA1ToRel2 rAdj = {s1 = "" ; s2 = (rAdj!L).s1 ; s3 = (rAdj!L).s2} ;
 
-        rAM0ToRel2 rAdjM = {s1 = (rAdjM!L).s ; s2 = "" ; s3 = "" } ;
+        --rAM0ToRel2 rAdjM = {s1 = (rAdjM!L).s ; s2 = "" ; s3 = "" } ;
 
-        rA2ToRel3 rAdj2 = {s1 = "" ; s2 = (rAdj2!L).s1 ; s3 = (rAdj2!L).s2 ; s4 = (rAdj2!L).s3} ;
+        --rA2ToRel3 rAdj2 = {s1 = "" ; s2 = (rAdj2!L).s1 ; s3 = (rAdj2!L).s2 ; s4 = (rAdj2!L).s3} ;
 
         varToEntity = id SS ;
         intToEntity = id SS ;
